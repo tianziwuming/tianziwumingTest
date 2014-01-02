@@ -10,6 +10,7 @@ public class SocketTestDemo {
 			//Æô¶¯·şÎñ¶Ë
 			 new Thread(){
 
+				@Override
 				public void run() {
 					try{
 						ServerSocketTest server=new ServerSocketTest(1234);

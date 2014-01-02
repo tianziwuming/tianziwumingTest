@@ -34,6 +34,7 @@ public class TestVO implements Serializable{
 		this.number = number;
 	}
 	
+	@Override
 	public String toString(){
 		return this.getClass().getName()+": name="+name+", value="+value+", number="+number;
 	}

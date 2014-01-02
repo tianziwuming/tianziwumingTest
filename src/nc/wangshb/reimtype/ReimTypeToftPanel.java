@@ -62,7 +62,7 @@ public class ReimTypeToftPanel extends JPanel {
 			table.setSize(200, 300);
 			table.setLocation(10,50);
 			//table.setModel(getTableModel());
-			TableColumn[] columns=this.getTableColumn();
+			TableColumn[] columns=ReimTypeToftPanel.getTableColumn();
 			for(int i=0;i<columns.length;i++){
 				table.addColumn(columns[i]);
 			}
