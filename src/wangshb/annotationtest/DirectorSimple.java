@@ -1,8 +1,21 @@
 package wangshb.annotationtest;
 
-@Direct(value="abcd",methodNames={"method1","method2","method3"})
-@AnnotationTest("abc")
-public class DirectorSimple {
+import java.io.Serializable;
+
+
+  @AnnotationTest(methodNames={"method1","method2","method3"})
+public class DirectorSimple implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	public DirectorSimple(){
+		super();
+	}
+	
+	@AnnotationTest(methodNames={"method3","method2","method1"})
+	public void oppositeMethods(){
+		
+	}
 	
 	public void method1(){
 		System.out.println("method 1......");

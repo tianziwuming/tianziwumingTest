@@ -1,28 +1,28 @@
 package wangshb.annotationtest;
 
 import java.lang.reflect.Method;
-import java.util.Hashtable;
 
 public class AnnotaionDirectTool {
 
 	public void execDirectMethods(DirectorSimple simple){
-		boolean isDirectAnnotation=simple.getClass().isAnnotationPresent(Direct.class);
+		boolean isAnnotation=simple.getClass().isAnnotation();
+		boolean isDirectAnnotation=simple.getClass().isAnnotationPresent(AnnotationTest.class);
 		if(isDirectAnnotation){
-			Direct direct=simple.getClass().getAnnotation(Direct.class);
-			System.out.println("direct_name="+direct.name());
-			System.out.println("direct_value="+direct.value());
+			AnnotationTest direct=simple.getClass().getAnnotation(AnnotationTest.class);
 			String[] methods=direct.methodNames();
 			executeMethods(simple,methods);
 		}
-		
-		System.out.println();
-		
-		boolean isDirectAnnotation1=simple.getClass().isAnnotationPresent(AnnotationTest.class);
-		if(isDirectAnnotation1){
-			AnnotationTest direct=simple.getClass().getAnnotation(AnnotationTest.class);
-			String value=direct.value();
-			System.out.println("Annotation_value="+value);
+		try{
+			Method method=simple.getClass().getMethod("oppositeMethods", (Class[])null);
+			if(method.isAnnotationPresent(AnnotationTest.class)){
+				AnnotationTest test=method.getAnnotation(AnnotationTest.class);
+				String[] methods=test.methodNames();
+				executeMethods(simple,methods);
+			}
+		}catch(Exception ex){
+			 
 		}
+		
 	}
 	
 	private void executeMethods(Object obj,String[] methods){
@@ -37,10 +37,7 @@ public class AnnotaionDirectTool {
 	}
 	
 	public static void main(String[] args){
-		new AnnotaionDirectTool().execDirectMethods(new DirectorSimple());
-		Hashtable<String,String> ht=new Hashtable<String,String>();
-		//ht.put(null, "abc");
-		ht.put("abc", null);
+		DirectorSimple simple=new DirectorSimple();
+		new AnnotaionDirectTool().execDirectMethods(simple);
 	}
 }
-
