@@ -15,7 +15,7 @@ public class Main {
 		
 		//testExecutor();
 		
-		//testSameThreadRun();
+		testSameThreadRun();
 		
 		testCyclicBarrier();
 		
